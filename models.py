@@ -1,9 +1,11 @@
 from sqlalchemy import (
-    MetaData, Table, Integer, Column, String, ARRAY, ForeignKeyConstraint, PrimaryKeyConstraint
+    Table, Integer, Column, String, ARRAY, ForeignKeyConstraint, PrimaryKeyConstraint
 )
 
 # from sqlalchemy.dialects import postgresql
-metadata = MetaData()
+from extensions import db
+
+metadata = db.metadata
 
 
 maker = Table(
@@ -11,7 +13,7 @@ maker = Table(
     Column('id', Integer, primary_key=True),
     Column('name', String(255), nullable=False),
     Column('url', String(255), nullable=False),
-    Column('parser_cls')
+    Column('parser_cls', String(255))
 )
 
 component = Table(

@@ -1,6 +1,7 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 
+import models
+from extensions import db
 
 app = Flask(__name__)
 
@@ -9,7 +10,8 @@ app.config.from_mapping(
     SQLALCHEMY_DATABASE_URI='sqlite:////tmp/test.db'
 )
 
-db = SQLAlchemy(app)
+# init exts
+db.init_app(app)
 
 
 @app.route('/')
