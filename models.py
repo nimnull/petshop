@@ -1,4 +1,6 @@
-from sqlalchemy import MetaData, Table, Integer, Column, String, ARRAY, ForeignKeyConstraint
+from sqlalchemy import (
+    MetaData, Table, Integer, Column, String, ARRAY, ForeignKeyConstraint, PrimaryKeyConstraint
+)
 
 # from sqlalchemy.dialects import postgresql
 metadata = MetaData()
@@ -34,4 +36,13 @@ product_variant = Table(
     Column('id', Integer, primary_key=True),
     Column('product_id', Integer),
     ForeignKeyConstraint(('product_id',), ['product.id'])
+)
+
+product_component = Table(
+    'product_component', metadata,
+    Column('product_id', Integer, nullable=False),
+    Column('component_id', Integer, nullable=False),
+    PrimaryKeyConstraint('product_id', 'component_id', name='product_component_pk'),
+    ForeignKeyConstraint(('product_id',), ['product.id']),
+    ForeignKeyConstraint(('component_id',), ['component.id']),
 )
