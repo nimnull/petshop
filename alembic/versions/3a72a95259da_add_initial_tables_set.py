@@ -27,6 +27,7 @@ def upgrade():
     op.create_table('maker',
         sa.Column('id', sa.Integer(), nullable=False),
         sa.Column('name', sa.String(length=255), nullable=False),
+        sa.Column('normalized_name', sa.String(length=255), nullable=False),
         sa.Column('url', sa.String(length=255), nullable=False),
         sa.Column('parser_cls', sa.String(length=255), nullable=True),
         sa.PrimaryKeyConstraint('id')
