@@ -7,7 +7,8 @@ app = Flask(__name__)
 
 app.config.from_mapping(
     SECRET_KEY='dev',
-    SQLALCHEMY_DATABASE_URI='sqlite:////tmp/test.db'
+    SQLALCHEMY_DATABASE_URI='sqlite:////tmp/test.db',
+    # SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://postgres:mysecretpassword@localhost/petshop'
 )
 
 # init exts
