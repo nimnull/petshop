@@ -12,6 +12,7 @@ maker = Table(
     'maker', metadata,
     Column('id', Integer, primary_key=True),
     Column('name', String(255), nullable=False),
+    Column('normalized_name', String(255), nullable=False),
     Column('url', String(255), nullable=False),
     Column('parser_cls', String(255))
 )
